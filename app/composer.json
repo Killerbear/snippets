@@ -1,0 +1,8 @@
+{
+  "name": "hallowelt42/snippets",
+  "autoload": {
+    "psr-4": {
+      "snippets\\": "src/"
+    }
+  }
+}
