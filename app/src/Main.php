@@ -2,7 +2,8 @@
 
 namespace snippets;
 
-use snippets\code_challenges\php\sockMerchant;
+
+use snippets\recursion\BacteriaGrowth;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -11,11 +12,7 @@ class Main
 {
   public function __construct()
   {
-
-    // example
-    new sockMerchant();
-
-
+    new BacteriaGrowth();
   }
 }
 
