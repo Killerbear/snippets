@@ -3,7 +3,7 @@
 namespace snippets;
 
 
-use snippets\recursion\BacteriaGrowth;
+use snippets\number_series\CombinationTable2D;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -12,7 +12,7 @@ class Main
 {
   public function __construct()
   {
-    new BacteriaGrowth();
+    new CombinationTable2D();
   }
 }
 
