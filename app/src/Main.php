@@ -3,7 +3,9 @@
 namespace snippets;
 
 
-use snippets\number_series\CombinationTable2D;
+
+use snippets\aoc\Y2021\Day_1\SonarSweep;
+use snippets\aoc\Y2021\Day_1\SonarSweepGroup;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -12,7 +14,12 @@ class Main
 {
   public function __construct()
   {
-    new CombinationTable2D();
+//    new GradesGermany();
+//    new TimeTrack();
+
+    new SonarSweep();
+    new SonarSweepGroup();
+
   }
 }
 
