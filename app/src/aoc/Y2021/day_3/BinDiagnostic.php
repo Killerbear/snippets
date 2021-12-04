@@ -30,13 +30,8 @@ class BinDiagnostic
     }
 
     foreach ($one as $i => $bits) {
-      if ($bits > $zero[$i]) {
-        $gamma_rate   .= '1';
-        $epsilon_rate .= '0';
-      } else {
-        $gamma_rate   .= '0';
-        $epsilon_rate .= '1';
-      }
+      $gamma_rate   .= $bits > $zero[$i] ? 1 : 0;
+      $epsilon_rate .= $bits > $zero[$i] ? 0 : 1;
     }
 
     // Ausgabe
