@@ -10,7 +10,7 @@ use SplFileObject;
  * https://adventofcode.com/2021/day/3 part 2
  *
  * Class BinDiagnostic
- * @package snippets\aoc\Y2021\day_3
+ * @package snippets\aoc\y2021\day_3
  */
 class BinDiagnostic
 {
