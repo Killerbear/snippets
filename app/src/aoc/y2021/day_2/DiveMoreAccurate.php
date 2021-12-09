@@ -1,7 +1,7 @@
 <?php
 
 
-namespace snippets\aoc\Y2021\day_2;
+namespace snippets\aoc\y2021\day_2;
 
 
 use SplFileObject;
