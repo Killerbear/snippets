@@ -19,7 +19,7 @@ class GiantSquid
   private array $numbers;
   private array $number_fields;
   private array $checked_fields;
-  private int   $winner_bord_id;
+  private int   $winner_board_id;
   private int   $won_number_pos;
 
 
@@ -30,15 +30,15 @@ class GiantSquid
   {
 
     // Konfiguration
-    $numbers_file         = __DIR__ . '/example_bingo_numbers.txt';
-    $fields_file          = __DIR__ . '/example_bingo_fields.txt';
+    $numbers_file = __DIR__ . '/example_bingo_numbers.txt';
+    $fields_file  = __DIR__ . '/example_bingo_fields.txt';
 //    $numbers_file         = __DIR__ . '/bingo_numbers.txt';
 //    $fields_file          = __DIR__ . '/bingo_fields.txt';
 
-    $this->numbers        = [];
-    $this->number_fields  = [[]];
-    $this->winner_bord_id = -1;
-    $this->won_number_pos = -1;
+    $this->numbers         = [];
+    $this->number_fields   = [[]];
+    $this->winner_board_id = -1;
+    $this->won_number_pos  = -1;
 
 
     // Eingabe
@@ -47,12 +47,12 @@ class GiantSquid
 
 
     // Verarbeitung
-    $this->nowSolveBord();
+    $this->nowSolveBoard();
 
 
     // Auswertung
-    $won_number = (int)$this->numbers[$this->won_number_pos];
-    $sum = $this->sumOfAllUnmarkedNumbers($this->winner_bord_id);
+    $won_number  = (int)$this->numbers[$this->won_number_pos];
+    $sum         = $this->sumOfAllUnmarkedNumbers($this->winner_board_id);
     $final_score = $won_number * $sum;
 
     // Ausgabe
@@ -106,23 +106,23 @@ class GiantSquid
    * und prüfe bei jedem Durchlauf, ob ein Sieg stattgefunden hat.
    *
    */
-  private function nowSolveBord(): void
+  private function nowSolveBoard(): void
   {
     $solved = FALSE;
 
     foreach ($this->numbers as $number_pos => $number) {
 
-      foreach ($this->number_fields as $line => $number_field) {
+      foreach ($this->number_fields as $board_id => $number_field) {
 
         foreach ($number_field as $pos => $field) {
 
           if ((int)$field == (int)$number) {
 
-            $this->checked_fields[$line][$pos] = TRUE;
+            $this->checked_fields[$board_id][$pos] = TRUE;
 
-            if ($this->isFieldComplete($line) && !$solved) {
-              $this->winner_bord_id = $line;
-              $this->won_number_pos = $number_pos;
+            if ($this->isFieldComplete($board_id) && !$solved) {
+              $this->winner_board_id = $board_id;
+              $this->won_number_pos  = $number_pos;
               return;
             }
 
@@ -140,16 +140,16 @@ class GiantSquid
   /**
    * Angekreuzte Felder finden
    *
-   * @param int $field_pos Aktuelle Feldposition 5 x 5
+   * @param int $board_id Aktuelle Feldposition 5 x 5
    * @return bool Gewonnen ja/nein
    */
-  private function isFieldComplete(int $field_pos): bool
+  private function isFieldComplete(int $board_id): bool
   {
 
     for ($i = 0; $i < 5; $i += 1) {
 
       // horizontal
-      $horizontal_part = array_slice($this->checked_fields[$field_pos], $i * 5, 5);
+      $horizontal_part = array_slice($this->checked_fields[$board_id], $i * 5, 5);
       if ($this->checkSequence($horizontal_part) === TRUE) {
         return TRUE;
       }
@@ -157,7 +157,7 @@ class GiantSquid
       // vertical
       $vertical_part = [];
       for ($j = 0; $j < 5; $j++) {
-        $vertical_part[] = $this->checked_fields[$field_pos][$i + ($j * 5)];
+        $vertical_part[] = $this->checked_fields[$board_id][$i + ($j * 5)];
       }
       if ($this->checkSequence($vertical_part) === TRUE) {
         return TRUE;
@@ -189,17 +189,17 @@ class GiantSquid
   /**
    * Summer aller Zahlen von unmarkierten Feldern
    *
-   * @param int $winner_bord_id Board-ID
+   * @param int $winner_board_id Board-ID
    * @return int sum
    *
    */
-  private function sumOfAllUnmarkedNumbers(int &$winner_bord_id): int
+  private function sumOfAllUnmarkedNumbers(int &$winner_board_id): int
   {
 
     $sum = 0;
 
-    foreach ($this->checked_fields[$winner_bord_id] as $list_pos => $checkedField) {
-      $sum += $checkedField ? 0 : $this->number_fields[$winner_bord_id][$list_pos];
+    foreach ($this->checked_fields[$winner_board_id] as $list_pos => $checkedField) {
+      $sum += $checkedField ? 0 : $this->number_fields[$winner_board_id][$list_pos];
     }
 
     return $sum;
