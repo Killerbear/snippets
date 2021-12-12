@@ -1,7 +1,7 @@
 <?php
 
 
-namespace snippets\aoc\y2021\day_4;
+namespace snippets\advent_of_code\y2021\day_4;
 
 use SplFileObject;
 
@@ -10,7 +10,7 @@ use SplFileObject;
  * https://adventofcode.com/2021/day/4
  *
  * Class GiantSquid
- * @package snippets\aoc\y2021\day_4
+ * @package snippets\advent_of_code\y2021\day_4
  */
 class GiantSquid
 {

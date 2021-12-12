@@ -1,7 +1,7 @@
 <?php
 
 
-namespace snippets\aoc\Y2021\day_3\helper;
+namespace snippets\advent_of_code\y2021\day_3\helper;
 
 
 class DualCounter

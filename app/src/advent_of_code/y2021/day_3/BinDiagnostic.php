@@ -1,16 +1,16 @@
 <?php
 
 
-namespace snippets\aoc\Y2021\day_3;
+namespace snippets\advent_of_code\y2021\day_3;
 
-use snippets\aoc\Y2021\day_3\helper\DualCounter;
+use snippets\advent_of_code\Y2021\day_3\helper\DualCounter;
 use SplFileObject;
 
 /**
  * https://adventofcode.com/2021/day/3 part 2
  *
  * Class BinDiagnostic
- * @package snippets\aoc\y2021\day_3
+ * @package snippets\advent_of_code\y2021\day_3
  */
 class BinDiagnostic
 {

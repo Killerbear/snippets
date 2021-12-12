@@ -1,11 +1,18 @@
 <?php
 
 
-namespace snippets\aoc\Y2021\Day_1;
+namespace snippets\advent_of_code\y2021\day_1;
 
 
 use SplFileObject;
 
+
+/**
+ * https://adventofcode.com/2021/day/1
+ *
+ * Class SonarSweep
+ * @package snippets\advent_of_code\y2021\day_1
+ */
 class SonarSweep
 {
 

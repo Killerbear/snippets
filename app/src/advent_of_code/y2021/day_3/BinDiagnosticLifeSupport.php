@@ -1,11 +1,18 @@
 <?php
 
 
-namespace snippets\aoc\Y2021\day_3;
+namespace snippets\advent_of_code\y2021\day_3;
 
 
 use SplFileObject;
 
+
+/**
+ * https://adventofcode.com/2021/day/3
+ *
+ * Class BinDiagnosticLifeSupport
+ * @package snippets\advent_of_code\Y2021\day_3
+ */
 class BinDiagnosticLifeSupport
 {
   public function __construct()
