@@ -87,11 +87,34 @@ class Field2d
     if ($x1 === $x2) {
       $this->order($y1, $y2);
       $this->draw_y($y1, $y2, $x1);
+      return;
     }
 
     if ($y1 === $y2) {
       $this->order($x1, $x2);
       $this->draw_x($x1, $x2, $y1);
+      return;
+    }
+
+    $this->draw_xy($x1, $y1, $x2, $y2);
+
+  }
+
+
+  /**
+   * @param int $x1
+   * @param int $y1
+   * @param int $x2
+   * @param int $y2
+   */
+  private function draw_xy(int $x1, int $y1, int $x2, int $y2)
+  {
+    $x   = ($x1 < $x2) ? 1 : -1;
+    $y   = ($y1 < $y2) ? 1 : -1;
+    $max = abs($x2 - $x1);
+
+    for ($i = 0; $i <= $max; $i++) {
+      $this->field_2d[$y1 + ($i * $y)][$x1 + ($i * $x)] += ($this->field_2d[$y1 + ($i * $y)][$x1 + ($i * $x)] < 2) ? 1 : 0;
     }
   }
 
@@ -121,7 +144,7 @@ class Field2d
    */
   private function draw_y(int $a, int $b, int $x)
   {
-    for (; $a < $b + 1; $a++) {
+    for (; $a <= $b; $a++) {
       $this->field_2d[$a][$x] += ($this->field_2d[$a][$x] < 2) ? 1 : 0;
     }
   }
@@ -136,11 +159,10 @@ class Field2d
    */
   private function draw_x(int $a, int $b, int $y)
   {
-    for (; $a < $b + 1; $a++) {
+    for (; $a <= $b; $a++) {
       $this->field_2d[$y][$a] += ($this->field_2d[$y][$a] < 2) ? 1 : 0;
     }
   }
-
 
 
   /**
@@ -158,7 +180,6 @@ class Field2d
     }
     return $n;
   }
-
 
 
 }

@@ -8,7 +8,7 @@ use snippets\advent_of_code\y2021\day_5\helper\Field2d;
 use SplFileObject;
 
 
-class HydrothermalVenture
+class HydrothermalVentureDiagonal
 {
 
 
@@ -51,30 +51,8 @@ class HydrothermalVenture
     $a  = explode(',', $ab[0]);
     $b  = explode(',', $ab[1]);
 
-    // Diagonale Werte aussortieren
-    if ($this->check_diagonal($a[0], $a[1], $b[0], $b[1]) === FALSE) {
-      return;
-    }
-
     $this->field_2d->draw_line($a[0], $a[1], $b[0], $b[1]);
 
-  }
-
-
-  /**
-   * @param int $x1
-   * @param int $y1
-   * @param int $x2
-   * @param int $y2
-   * @return bool
-   */
-  private function check_diagonal(int $x1, int $y1, int $x2, int $y2)
-  {
-    if ($x1 === $x2 || $y1 === $y2) {
-      return TRUE;
-    }
-
-    return FALSE;
   }
 
 
