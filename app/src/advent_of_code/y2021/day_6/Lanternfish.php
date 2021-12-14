@@ -78,17 +78,17 @@ class Lanternfish
    *
    *
    * example:
-   *
+   *    Problemanalyse
    *
    *                                            0   1   2   3   4   5   6   7   8  <- Werte
    *                                            ---------------------------------
    * Initial state: 3,4,3,1,2                   0   1   1   2   1   0   0   0   0  <- Anzahl der Werte
    * After  1 day:  2,3,2,0,1                  [1]  1   2   1   0   0   0   0   0
-   * After  2 days: 1,2,1,6,0,8                [1]  2   1   0   0   0  [1]  0  [1] <- addiere Vortagsmenge aller 0er-Werte bei 6er-Werte und 8er-Werte
-   * After  3 days: 0,1,0,5,6,7,8              [2]  1   0   0   0   1  [1]  1  [1]
+   * After  2 days: 1,2,1,6,0,8                [1]  2   1   0   0   0  [1]  0  [1] <- addiere Vortagsmenge aller 0er-Werte bei 8er-Werte
+   * After  3 days: 0,1,0,5,6,7,8              [2]  1   0   0   0   1  [1]  1  [1]    und ersetze alle 6er-Werte aus 0er-Werten der Vortagsmenge
    * After  4 days: 6,0,6,4,5,6,7,8,8          [1]  0   0   0   1   1  [3]  1  [2]
    * After  5 days: 5,6,5,3,4,5,6,7,7,8         0   0   0   1   1   3  [2]  2  [1]
-   *
+   * ...
    *
    *
    */
