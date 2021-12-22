@@ -66,7 +66,7 @@ class Segment7
 
 
   /**
-   * Decodiere falsche Verdratung umd ermittelt Ziel-Werte
+   * Decodiert falsche Verdrahtung umd ermittelt Ziel-Werte
    *
    * @param array $test_sequences
    * @param array $target_sequences
@@ -149,7 +149,7 @@ class Segment7
 
 
   /**
-   * entferne pin-Zuordnung die ausgeschlossen sind
+   * entferne pin-Zuordnung in der Map welche ausgeschlossen sind
    *
    * @param string $must_pin Eindeutige Zuordnung
    * @param string $is_pin Aktuelle Zuordnung
@@ -163,13 +163,15 @@ class Segment7
 
   /**
    * Übersetzer
+   *  decodiert Verdrahtungsplan mit Hilfe der Map
    *
-   * @param $sequence
-   * @return int
+   * @param string $sequence Eingangspinbelegung
+   * @return int Zahlenergebnis
    */
-  private function translater($sequence): int
+  private function translater(string $sequence): int
   {
 
+    // Eindeutige Werte, werden direkt ausgewertet
     switch (strlen($sequence)) {
       case 2:
         return 1;
@@ -181,6 +183,8 @@ class Segment7
         return 8;
     }
 
+
+    // Mehrdeutige Werte werden über Mapping ermittelt
     $decode_sequence = [];
     foreach (str_split($sequence, 1) as $item) {
       $decode_sequence[] = array_flip($this->wiremap)[$item];
