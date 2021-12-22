@@ -19,6 +19,7 @@ class SevenSegmentSearch
   public function __construct()
   {
 
+
     // Konfiguration
 //    $file = __DIR__ . '/example_input.txt';
     $file = __DIR__ . '/input.txt';
