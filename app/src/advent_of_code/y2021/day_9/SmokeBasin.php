@@ -4,6 +4,7 @@
 namespace snippets\advent_of_code\y2021\day_9;
 
 
+use snippets\advent_of_code\y2021\day_9\helper\TListOfValleys;
 use SplFileObject;
 use SplQueue;
 
@@ -17,6 +18,7 @@ use SplQueue;
 class SmokeBasin
 {
 
+  use TListOfValleys;
 
   public function __construct()
   {
@@ -62,49 +64,6 @@ class SmokeBasin
   }
 
 
-  /**
-   * @param array|null $top
-   * @param array $current
-   * @param array|null $bottom
-   * @return array
-   */
-  private function ListOfValleys(?array $top, array $current, ?array $bottom): array
-  {
-
-    $index      = 0;
-    $last_index = count($current) - 1;
-    $min_list   = [];
-
-    foreach ($current as $item) {
-
-      $values = [];
-
-      if ($top !== NULL) {
-        $values[] = (int)$top[$index];
-      }
-
-      if ($bottom !== NULL) {
-        $values[] = (int)$bottom[$index];
-      }
-
-      if ($index > 0) {
-        $values[] = (int)$current[$index - 1];
-      }
-
-      if ($index < $last_index) {
-        $values[] = (int)$current[$index + 1];
-      }
-
-      if ((int)$item < min($values)) {
-        $min_list[] = (int)$item;
-      }
-
-      $index++;
-    }
-
-    return $min_list;
-
-  }
 
 
 }
