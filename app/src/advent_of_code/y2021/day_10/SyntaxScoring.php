@@ -14,7 +14,7 @@ class SyntaxScoring
   {
 
     $file = __DIR__ . '/input.txt';
-//    $file = __DIR__ . '/example2_input.txt';
+//    $file = __DIR__ . '/example_input.txt';
 
     $this->solve_day_1($file);
     $this->solve_day_2($file);
@@ -71,38 +71,57 @@ class SyntaxScoring
 
     while ($data = trim($file_operator->fgets())) {
 
-      $part = 0;
+
       $this->del_pais($data);
 
-      // array_reverse!
-      foreach (array_reverse(str_split($data)) as $val) {
-        $part *= 5;
-        switch ($val) {
-          case '(':
-            $part++;
-            break;
-          case '[':
-            $part += 2;
-            break;
-          case '{':
-            $part += 3;
-            break;
-          case '<':
-            $part += 4;
-            break;
-        }
+      $part = $this->chk_missed($data);
+      if($part === 0){
+        continue;
       }
-
       $sums[] = $part;
 
     }
 
     sort($sums);
-    $median = intdiv(count($sums) ,2);
+    $median = intdiv(count($sums), 2);
 
     print_r($sums[$median]);
     print_r(PHP_EOL);
 
+  }
+
+  /**
+   * @param string $data
+   * @return int
+   */
+  private function chk_missed(string $data): int
+  {
+
+    $part = 0;
+    foreach (array_reverse(str_split($data)) as $val) {
+
+      $part *= 5;
+      switch ($val) {
+        case '(':
+          $part++;
+          break;
+        case '[':
+          $part += 2;
+          break;
+        case '{':
+          $part += 3;
+          break;
+        case '<':
+          $part += 4;
+          break;
+        case ')':
+        case ']':
+        case '}':
+        case '>':
+          return 0;
+      }
+    }
+    return $part;
   }
 
 
