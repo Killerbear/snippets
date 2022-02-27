@@ -4,8 +4,9 @@ namespace snippets;
 
 
 
-use snippets\aoc\Y2021\Day_1\SonarSweep;
-use snippets\aoc\Y2021\Day_1\SonarSweepGroup;
+
+use snippets\advent_of_code\y2021\day_1\SonarSweep;
+use snippets\standart_algorithm\sort\BubbleSort;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -14,12 +15,7 @@ class Main
 {
   public function __construct()
   {
-//    new GradesGermany();
-//    new TimeTrack();
-
-    new SonarSweep();
-    new SonarSweepGroup();
-
+      new BubbleSort();
   }
 }
 
