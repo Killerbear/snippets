@@ -4,5 +4,11 @@
     "psr-4": {
       "snippets\\": "src/"
     }
+  },
+  "require": {
+    "james-heinrich/getid3": "2.0.x-dev",
+    "guzzle/guzzle": "v3.9.3",
+    "bramus/router": "1.6.1",
+    "ext-dom": "*"
   }
 }
