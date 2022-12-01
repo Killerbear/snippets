@@ -1,5 +1,11 @@
 # snippets 
 
+## Vorbereitung 
+### Docker
+```bash
+docker-compose up
+```
+
 ## lose Sammmlung von Beispielcode
 
 Jedes Beispiel ist in einer eigenen Klasse definiert und kann zentral ausgeführt werden.
