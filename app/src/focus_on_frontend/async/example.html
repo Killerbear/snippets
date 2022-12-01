@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    const getHTTPFake = (i) => {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve((i * 1000) + " ms");
+            }, 1000 * i)
+        })
+    }
+
+
+    const call = async () => {
+        return await Promise.all([
+            getHTTPFake(2),
+            getHTTPFake(1)
+        ]);
+    }
+
+    call().then(console.log);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add a User for Test</title>
+</head>
+<body>
+<label for="newFirstName">first name:</label><input id="newFirstName" type="text"/>
+<br/>
+<label for="newLastName">last name: </label><input id="newLastName" type="text"/>
+<br/>
+<label for="newPhone">phone number: </label><input id="newPhone" type="text"/>
+<br/>
+<br/>
+<button id="add-user">addUser</button>
+</body>
+<script>
+
+    var persons = [
+        {
+            "firstname": "Johnny",
+            "lastname": "Depp",
+            "phoneNumber": "987654321"
+        },
+        {
+            "firstname": "Thomas",
+            "lastname": "Müller",
+            "phoneNumber": "123456789"
+        }
+    ];
+
+    var button_add = document.getElementById("add-user");
+    button_add.addEventListener("click", addUser);
+
+    function addUser() {
+        let firstname = document.getElementById('newFirstName');
+        let lastname = document.getElementById('newLastName');
+        let phoneNumber = document.getElementById('newPhone');
+
+        persons.push({
+            "firstname": firstname.value,
+            "lastname": lastname.value,
+            "phoneNumber": phoneNumber.value
+        });
+
+        console.log(persons);
+    }
+
+</script>
+</html>
+
