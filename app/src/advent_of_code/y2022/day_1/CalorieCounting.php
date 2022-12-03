@@ -10,37 +10,32 @@ use SplFileObject;
  */
 class CalorieCounting
 {
-
     public function __destruct()
     {
-
         // Eingabe
-        $fo = new SplFileObject(__DIR__ . '/input.txt');
-
+        $inputFile = new SplFileObject(__DIR__ . '/input.txt');
 
         // Verarbeitung
-        $numbers = [];
-        $number  = 0;
-        while (($data = $fo->fgets())) {
-            $number += (int)$data;
+        $calorieSum = [];
+        $calories  = 0;
+        
+        while (($meal = $inputFile->fgets())) {
+            $calories += (int)$meal;
             if ((int)$data === 0) {
-                $numbers[] = $number;
-                $number    = 0;
+                $calorieSum[] = $calories;
+                $calories    = 0;
             }
         }
-        $numbers[] = $number;
-
-        rsort($numbers,SORT_NUMERIC);
+        
+        $calorieSum[] = $calories;
+        rsort($calorieSum,SORT_NUMERIC);
 
         // Ausgabe Teil 1
-        print_r($numbers[0]);
+        print_r($calorieSum[0]);
         print_r(PHP_EOL);
 
         // Ausgabe Teil 2
-        print_r($numbers[0]+$numbers[1]+$numbers[2]);
+        print_r($calorieSum[0]+$calorieSum[1]+$calorieSum[2]);
         print_r(PHP_EOL);
-
-
     }
-
 }
